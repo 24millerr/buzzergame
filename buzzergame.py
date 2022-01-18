@@ -17,23 +17,38 @@ GPIO.setmode(GPIO.BCM)
 
 # setup button pin asBu input and buzzer pin as output
 GPIO.setup(up, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(buzzer_pin, GPIO.OUT)
 GPIO.setup(left, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+isDown = False
+isDown2 = False
+t =5
 
 try:
     while True:
         # check if button pressed
         if(GPIO.input(up) == 0):
-            # set buzzer on
+            isDown = False
+
+        if(GPIO.input(up) == 1) and isDown == False:
+            isDown = True
             counter+=1
             print(counter)
-            GPIO.output(buzzer_pin, GPIO.HIGH)
-        
-        else:
-            # it's not pressed, set button off
-            GPIO.output(buzzer_pin, GPIO.LOW)
-        
 
+        
+        
+        #button 2
+        if(GPIO.input(left) == 0):
+            isDown2 = False
+       
+        if(GPIO.input(left) == 1) and isDown2 == False:
+            isDown2 = True
+            counter-=1
+            print(counter)
+            
+        if counter == -50:
+            print("Player Left Wins!")
+        if counter == 50:
+            print("Player Up Wins!")
 except KeyboardInterrupt:
     GPIO.cleanup()
     
