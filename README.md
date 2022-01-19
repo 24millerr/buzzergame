@@ -1,2 +1,2 @@
-# buzzergame
+# Miller-Final
 I created a game where 2 players have to press the up or left buttons faster than the other player in order to win. The code reads the input of the up and left button and whenever the up button goes down then up, the counter adds 1. Whenever the left button goes down then up, the countes subtracts 1. If the counter reaches -20, Left player wins. If the counter reaches 20, up player wins. Originally, it would add thousands to the counter for one button press. This was due to the code reading multiple inputs when the button was held down. I solved the problem by adding the critera that the button has to be pressed down, then let go to add or subtract to the counter.
